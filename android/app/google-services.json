@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "929758154286",
+    "project_id": "tec-solutions-f2797",
+    "storage_bucket": "tec-solutions-f2797.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929758154286:android:cc1929006aee2d40d759bf",
+        "android_client_info": {
+          "package_name": "br.com.galdino.tec_solutions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929758154286-r8n93qf8driuebk7qjm1uei2f313d2cn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMitI4s5erQNYaJdwow7ZT05HzFCTF6zE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929758154286-r8n93qf8driuebk7qjm1uei2f313d2cn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
