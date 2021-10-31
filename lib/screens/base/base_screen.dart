@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tec_solutions/common/drawer/custon_drawer.dart';
 import 'package:tec_solutions/models/page_manager.dart';
 import 'package:tec_solutions/models/user_manager.dart';
+import 'package:tec_solutions/screens/base/admin_orders/admin_orders_screen.dart';
 import 'package:tec_solutions/screens/base/admin_users/admin_users_screen.dart';
 import 'package:tec_solutions/screens/base/home/home_screen.dart';
 import 'package:tec_solutions/screens/base/login/login_screen.dart';
@@ -41,12 +42,7 @@ class _BaseScreenState extends State<BaseScreen> {
               if(userManager.adminEnabled)
                 ...[
                   AdminUsersScreen(),
-                  Scaffold(
-                    drawer: CustomDrawer(),
-                    appBar: AppBar(
-                      title: const Text('Pedidos'),
-                    ),
-                  ),
+                  AdminOrdersScreen(),
                 ]
             ],
           );

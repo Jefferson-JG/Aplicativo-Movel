@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tec_solutions/models/order.dart';
 import 'package:tec_solutions/screens/base/cart/components/order_product_tile.dart';
-//4545
+
 
 class OrderTile extends StatelessWidget {
 
@@ -39,10 +39,11 @@ class OrderTile extends StatelessWidget {
               ],
             ),
             Text(
-              'Em Transporte',
+              order.statusText,
               style: TextStyle(
                 fontWeight: FontWeight.w400,
-                  color: primaryColor,
+                  color: order.status == Status.canceled ?
+                  Colors.red : primaryColor,
                 fontSize: 14
               ),
             )

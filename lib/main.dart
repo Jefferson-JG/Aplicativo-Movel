@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tec_solutions/models/admin_orders_manager.dart';
 import 'package:tec_solutions/models/admin_users_manager.dart';
 import 'package:tec_solutions/models/cart_manager.dart';
 import 'package:tec_solutions/models/home_manager.dart';
@@ -62,6 +63,14 @@ class MyApp extends StatelessWidget {
           lazy: false,
           update: (_, userManager, adminUsersManager) =>
           adminUsersManager..updateUser(userManager),
+        ),
+        ChangeNotifierProxyProvider<UserManager, AdminOrdersManager>(
+          create: (_) => AdminOrdersManager(),
+          lazy: false,
+          update: (_, userManager, adminOrdersManager) =>
+          adminOrdersManager..updateAdmin(
+            adminEnabled: userManager.adminEnabled
+          ),
         )
 
       ],
