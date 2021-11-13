@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tec_solutions/common/drawer/order/order_product_tile.dart';
 import 'package:tec_solutions/models/order.dart';
-import 'package:tec_solutions/screens/base/cart/components/order_product_tile.dart';
 
 class ConfirmationScreen extends StatelessWidget {
 

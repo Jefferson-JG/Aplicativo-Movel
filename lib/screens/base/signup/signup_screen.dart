@@ -97,8 +97,8 @@ class SignUpScrenn extends StatelessWidget {
 
                             if(user.password != user.confirmPassword){
                               scaffoldkey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: const Text('As Senhas não Conincidem'),
+                                  const SnackBar(
+                                    content: Text('As Senhas não Conincidem'),
                                     backgroundColor: Colors.red,
                                   )
                               );

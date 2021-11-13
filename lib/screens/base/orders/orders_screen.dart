@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tec_solutions/common/drawer/custon_drawer.dart';
 import 'package:tec_solutions/common/drawer/empty_card.dart';
 import 'package:tec_solutions/common/drawer/login_card.dart';
-import 'package:tec_solutions/common/drawer/order_tile.dart';
+import 'package:tec_solutions/common/drawer/order/order_tile.dart';
 import 'package:tec_solutions/models/orders_manager.dart';
 
 
