@@ -7,9 +7,13 @@ import 'package:tec_solutions/common/drawer/empty_card.dart';
 import 'package:tec_solutions/common/drawer/order/order_tile.dart';
 import 'package:tec_solutions/models/admin_orders_manager.dart';
 import 'package:tec_solutions/models/order.dart';
-//
 
-class AdminOrdersScreen extends StatelessWidget {
+class AdminOrdersScreen extends StatefulWidget {
+  @override
+  _AdminOrdersScreenState createState() => _AdminOrdersScreenState();
+}
+
+class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
   final PanelController panelController = PanelController();
 
   @override
