@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,7 @@ import 'package:uuid/uuid.dart';
 
 class Product extends ChangeNotifier{
 
-    Product({this.id, this.name, this.description, this.images, this.sizes}){
+    Product({this.id, this.name, this.description, this.images, this.sizes, this.deleted = false}){
       images = images ?? [];
       sizes = sizes ?? [];
     }
@@ -18,6 +17,7 @@ class Product extends ChangeNotifier{
       name = document['name'] as String;
       description = document['description'] as String;
       images = List<String>.from(document.data['images'] as List<dynamic>);
+      deleted = (document.data['deleted'] ?? false) as bool;
       sizes = (document.data['sizes'] as List<dynamic> ?? []).map(
               (s) => ItemSize.fromMap(s as Map<String, dynamic>)).toList();
       
@@ -36,6 +36,8 @@ class Product extends ChangeNotifier{
     List<ItemSize> sizes;
 
     List<dynamic> newImages;
+
+    bool deleted;
 
     bool _loading = false;
     bool get loading => _loading;
@@ -62,13 +64,13 @@ class Product extends ChangeNotifier{
     }
 
     bool get hasStock{
-      return totalStock > 0;
+      return totalStock > 0 && !deleted;
     }
 
     num get basePrice {
       num lowest = double.infinity;
       for(final size in sizes){
-        if(size.price < lowest && size.hasStock)
+        if(size.price < lowest)
           lowest = size.price;
       }
       return lowest;
@@ -90,6 +92,7 @@ class Product extends ChangeNotifier{
         'name': name,
         'description': description,
         'sizes': exportSizeList(),
+        'deleted': deleted
       };
 
       if(id == null){
@@ -112,7 +115,7 @@ class Product extends ChangeNotifier{
         }
       }
       for(final image in images){
-       if(!newImages.contains(image)){
+       if(!newImages.contains(image) && image.contains('firebase')){
          try {
            final ref = await storage.getReferenceFromUrl(image);
            await ref.delete();
@@ -129,6 +132,10 @@ class Product extends ChangeNotifier{
       loading = false;
     }
 
+    void delete(){
+      firestoreRef.updateData({'deleted': true});
+    }
+
     Product clone(){
       return Product(
         id: id,
@@ -136,6 +143,7 @@ class Product extends ChangeNotifier{
         description: description,
         images: List.from(images),
         sizes: sizes.map((size) => size.clone()).toList(),
+        deleted: deleted,
       );
     }
 

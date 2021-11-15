@@ -87,7 +87,6 @@ class MyApp extends StatelessWidget {
 
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-      initialRoute: '/base',
        onGenerateRoute: (settings){
           switch(settings.name){
             case '/login':
@@ -133,7 +132,7 @@ class MyApp extends StatelessWidget {
                     settings.arguments as Order
                   )
               );
-            case '/base':
+            case '/':
             default:
               return MaterialPageRoute(
                 builder: (_) => BaseScreen(),
